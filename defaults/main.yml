@@ -1,0 +1,16 @@
+---
+# defaults file for squid
+
+squid_ssl_ports:
+  - "443"
+  - "1025-65535"
+
+squid_always_directs: []
+squid_cache_peers: []
+squid_dns_v4_first: "off"
+squid_forwarded_for: "delete"
+squid_http_port: 3128
+squid_never_directs: []
+squid_proxy_only: true
+squid_tcp_outgoing_address: ''
+

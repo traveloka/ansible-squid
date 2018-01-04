@@ -1,0 +1,8 @@
+---
+# vars file for squid
+
+squid_packages:
+  - squid3
+squid_etc_dir: /etc/squid3
+squid_confd_dir: /etc/squid3/conf.d
+squid_service_name: squid3

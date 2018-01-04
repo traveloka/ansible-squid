@@ -1,0 +1,48 @@
+---
+
+- block:
+    - name: ensure squid is installed
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+        cache_valid_time: "{{ apt_cache_valid_time|default(omit) }}"
+        install_recommends: no
+      with_items:
+        - "{{ squid_packages }}"
+
+    - name: ensure conf.d directory created
+      file:
+        path: "{{ squid_confd_dir }}"
+        state: directory
+        mode: 0755
+        owner: root
+        group: root
+
+    - name: ensure outbound_acl configuration file is exist
+      file:
+        path: "{{ squid_confd_dir }}/outbound_acl.conf"
+        state: touch
+        mode: 0644
+        owner: root
+        group: root
+
+    - name: create squid configuration file
+      template:
+        backup: yes
+        src: squid.conf.j2
+        dest: "{{ squid_etc_dir }}/squid.conf"
+        owner: root
+        group: root
+        mode: 0644
+      notify:
+        - reload squid
+
+    - name: ensure squid is started
+      service:
+        name: "{{ squid_service_name }}"
+        state: started
+        enabled: yes
+  become: yes
+  tags:
+    - squid

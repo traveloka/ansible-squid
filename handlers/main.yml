@@ -1,0 +1,18 @@
+---
+# handlers file for squid
+
+- name: restart squid
+  become: yes
+  service:
+    name: "{{ squid_service_name }}"
+    state: restarted
+  tags:
+    - squid
+
+- name: reload squid
+  become: yes
+  service:
+    name: "{{ squid_service_name }}"
+    state: reloaded
+  tags:
+    - squid

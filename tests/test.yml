@@ -1,0 +1,21 @@
+---
+- hosts: all
+  vars:
+    apt_cache_valid_time: 3600
+    squid_acls:
+     - name: "default-src"
+       type: "src"
+       arguments:
+        - "0.0.0.0/0"
+     - name: "default-dst"
+       type: "dst"
+       arguments:
+        - "0.0.0.0/0"
+     - name: "payment-dest"
+       type: "dstdomain"
+       arguments:
+        - ".traveloka.com"
+    squid_http_access_allow_acls:
+       - "default-src payment-dest"
+  roles:
+    - role: ../../ansible-squid
