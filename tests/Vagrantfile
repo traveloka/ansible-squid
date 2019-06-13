@@ -24,7 +24,7 @@ Vagrant.configure(2) do |config|
 
   # define machines
   machines = []
-  machines << { name: "trusty", box: "ubuntu/trusty64" }
+  machines << { name: "xenial", box: "ubuntu/xenial64" }
 
   # iterate through machines
   machines.each do |machine|
