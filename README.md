@@ -1,6 +1,6 @@
-# shared/squid3 #
+# shared/squid #
 
-Ensures squid3 is installed and configured.
+Ensures squid is installed and configured.
 Customized from squid role created by Kevin Brebanov on ansible-galaxy.
 
 ## Requirements ##
@@ -53,15 +53,15 @@ Requires Ansible 2.0.
 
     - name: squid_packages
       desc: List of squid packages to install
-      value: squid3
+      value: squid
 
     - name: squid_etc_dir
       desc: path to squid configuration directory
-      value: /etc/squid3
+      value: /etc/squid
 
     - name: squid_service_name
       desc: Name of squid service
-      value: squid3
+      value: squid
 
 
 ## Dependencies ##
@@ -77,4 +77,3 @@ None.
     - hosts: all
       roles:
         - role: shared/squid
-
