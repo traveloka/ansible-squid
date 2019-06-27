@@ -8,6 +8,8 @@
         update_cache: yes
         cache_valid_time: "{{ apt_cache_valid_time|default(omit) }}"
         install_recommends: no
+      environment:
+        DEBIAN_FRONTEND: noninteractive
       with_items:
         - "{{ squid_packages }}"
 
